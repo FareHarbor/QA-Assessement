@@ -14,12 +14,12 @@
     context('When page is initially opened', function () {
       it('company information is present', function () {
         cy.request('https://demo.fareharbor.com/api/v1/companies/bigappletours/').then((response) => {
-          expect(response.body.company.name).to.eq("Big Apple Tours and Activitys")
-          expect(response.status).to.eq(403)
+          expect(response.body.company.name).to.eq("Big Apple Tours and Activities")    // FIX: There was a typo in our test, the endpoint returns "Big Apple Tours and Activities", while we checked for "Big Apple Tours and Activitys"
+          expect(response.status).to.eq(200)    // FIX: 403 is error code Forbidden which means that server understands request, but is missing necessary authorisation. 200 is OK and expected in this case
         })
       })
       it('activity overlay should be present', function () {
-        cy.get('#ng-app').should.('be.visible');
+        cy.get('#ng-app').should('be.visible');   // FIX: Chaining is performed with .<action>(), here it said .should.() -> Removed extra dot
       })
     }),    
     context('I pick an activity', function () {
@@ -39,8 +39,8 @@
       })
     })
     context('I select the amount of people', function () {
-      it('I add 26 adults', function () {
-        utils.addPeople(26);
+      it('I add 1 adult', function () {
+        utils.addPeople(1);    // FIX: The maximum number of people that can be booked for the Walking tour changes from slot to slot. The goal of test is to test happy path and not edge cases, therefore 1 for number of adults
       })
     })
     context('I fill in my contact information', function () {
@@ -52,11 +52,11 @@
       })
     })
     context('I pay and get confirmation', function () {
-      it('I complete and play', function () {
-        cy.get('btn-huge').click();
+      it('I complete and pay', function () {    // FIX: Typo fixed, was written "play" instead of "pay"
+        cy.get('.btn-huge').click();    // FIX: Locator for an element which we search by class value needs syntax cy.get('.<className>')
       })
       it('I get my receipt', function () {
-        cy.get('.receipt-header').should('be.visible');
+        cy.get('.receipt-header', { timeout: 30000 }).should('be.visible');   // FIX: Locator tries to find the element while the payment is still being processed. Adding custom timeout of 30 seconds
       })
     })
   })

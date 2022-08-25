@@ -6,7 +6,7 @@ class calendar {
     selectNextDay() {
         //Current Day Plus 1
         cy.get('.current-day').then(($nextDay) => {
-            const txt = parseInt($nextDay.text())+1;
+            const txt = parseInt($nextDay.text())+3;
             cy.get('.calendar-small-day').contains(txt).click();
         })
 
@@ -14,7 +14,7 @@ class calendar {
     selectTime() {
         //pick first available time
         cy.get('.calendar-small-content').should('be.visible');
-        cy.get('li').first().click();
+        cy.get('.calendar-small-content').find('li').first().click();       // FIX: cy.get('.calendar-small-content').find('li') returns list of free time slots where we click on the first one
     }
  }
 

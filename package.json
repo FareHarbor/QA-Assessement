@@ -21,10 +21,8 @@
     "url": "https://github.com/FareHarbor/qa-assessment/issues"
   },
   "homepage": "https://github.com/FareHarbor/qa-assessment#readme",
-  "dependencies": {
-    "cypress": "^10.6.0"
-  },
   "devDependencies": {
-    "@faker-js/faker": "^7.4.0"
+    "@faker-js/faker": "^7.4.0",
+    "cypress": "^10.6.0"
   }
 }
