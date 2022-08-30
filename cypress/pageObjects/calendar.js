@@ -6,7 +6,7 @@ class calendar {
     selectNextDay() {
         //Current Day Plus 1
         cy.get('.current-day').then(($nextDay) => {
-            const txt = parseInt($nextDay.text())+3;
+            const txt = parseInt($nextDay.text())+1;        // ISSUE: Test is flaky because there is a limited amount of free time slots the next day and also if tests are runned on 31st the increment will return 32
             cy.get('.calendar-small-day').contains(txt).click();
         })
 

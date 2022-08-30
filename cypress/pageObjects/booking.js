@@ -11,7 +11,7 @@ class bookings {
         //cy.get('').select('[data-country-code='+faker.address.countryCode().toLowerCase()+'"]')
         cy.get('.flag-container').click()
         cy.get('.country-list').contains(faker.address.country()).click()       // ISSUE: Flaky locator, failed to find Côte d’Ivoire because faker returns Cote d’Ivoire        
-        cy.get('.bookform-contact-phone').type(faker.phone.phoneNumber('999-###-###'))
+        cy.get('.bookform-contact-phone').type(faker.phone.number('999-###-###'))       //phoneNumber was deprecated, therefore changed to faker.phone.numer() | Also, the '999-###-###' overwrites the country selected in previous step
        
         //Email
         cy.get('#id_email').type(faker.internet.exampleEmail())

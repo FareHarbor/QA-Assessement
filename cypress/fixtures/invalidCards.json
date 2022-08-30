@@ -1,0 +1,47 @@
+{
+   "invalidCards": [
+     {
+        "cardNo": "4000000000000002",
+        "errorCode": "card_declined",
+        "declineCode": "generic_decline",
+        "expectedErrorMsg": "Could not process payment because the card was declined. Please make sure all card details have been entered correctly. If you are still unsuccessful you may need to call the card issuer or try a different card."
+    },
+    {
+        "cardNo": "4000000000009995",
+        "errorCode": "card_declined",
+        "declineCode": "insufficent_funds",
+        "expectedErrorMsg": "Could not process payment because the account has insufficient funds. Please call the card issuer or try another card."
+    },
+    {
+        "cardNo": "4000000000009987",
+        "errorCode": "card_declined",
+        "declineCode": "lost_card",
+        "expectedErrorMsg": "Could not process payment because the card was declined. Please make sure all card details have been entered correctly. If you are still unsuccessful you may need to call the card issuer or try a different card."
+    },
+    {
+        "cardNo": "4000000000009979",
+        "errorCode": "card_declined",
+        "declineCode": "stolen_card",
+        "expectedErrorMsg": "Could not process payment because the card was declined. Please make sure all card details have been entered correctly. If you are still unsuccessful you may need to call the card issuer or try a different card."
+    },
+    {
+        "cardNo": "4000000000000127",
+        "errorCode": "incorrect_cvc",
+        "expectedErrorMsg": "Could not process payment because the card CVC (security code) could not be verified. Please check the card security code, make sure all other card details have been entered correctly, and try again."
+    },
+    {
+        "cardNo": "4000000000000119",
+        "errorCode": "processing_error",
+        "expectedErrorMsg": "There was an error processing this request. Please refresh the page and try again, or contact FareHarbor Support. (U-PROC)"
+    },
+    {
+        "cardNo": "4000000000000069",
+        "errorCode": "expired_card",
+        "expectedErrorMsg": "Could not process payment because the card is cancelled or expired. Please try a different card."
+    },
+    {
+        "cardNo": "4242424242424241",
+        "errorCode": "incorrect_number",
+        "expectedErrorMsg": "Incorrect card number. Please check that you have entered your card number correctly and try again."
+    }
+]}

@@ -8,12 +8,12 @@
     const utils = new Utils()
     const bookings = new Bookings()
     before(function () {
-      cy.visit('https://demo.fareharbor.com/embeds/book/bigappletours/items/?full-items=yes')
+      cy.visit('/embeds/book/bigappletours/items/?full-items=yes') //Changed configuration, thus changing the cy.visit() parameter
     })
   
     context('When page is initially opened', function () {
       it('company information is present', function () {
-        cy.request('https://demo.fareharbor.com/api/v1/companies/bigappletours/').then((response) => {
+        cy.request('https://demo.fareharbor.com/api/v1/companies/bigappletours/').then((response) => { // I assume the intention was to intercept a request and not make a new one which is the case here
           expect(response.body.company.name).to.eq("Big Apple Tours and Activities")    // FIX: There was a typo in our test, the endpoint returns "Big Apple Tours and Activities", while we checked for "Big Apple Tours and Activitys"
           expect(response.status).to.eq(200)    // FIX: 403 is error code Forbidden which means that server understands request, but is missing necessary authorisation. 200 is OK and expected in this case
         })

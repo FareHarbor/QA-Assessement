@@ -4,7 +4,11 @@
   "description": "FareHarbor Quality Engineer Assessment.",
   "main": "index.js",
   "scripts": {
-    "test": "npx cypress run"
+    "test": "npx cypress run --spec \"cypress/e2e/test.cy.js\"",
+    "test-payment": "npx cypress run --spec \"cypress/e2e/TEST1_failedPayment.cy.js\"",
+    "test-invoice": "npx cypress run --spec \"cypress/e2e/TEST2_validateInvoice.cy.js\"",
+    "test-booking": "npx cypress run --spec \"cypress/e2e/TEST3_bookActivityInFuture.cy.js\"",
+    "test-privateTour": "npx cypress run --spec \"cypress/e2e/TEST4_bookBigApplePrivateTour.cy.js\""
   },
   "repository": {
     "type": "git",
