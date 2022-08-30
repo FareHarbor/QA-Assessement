@@ -2,24 +2,16 @@ import { BOOKING, ENDPOINTS, PAYMENT } from "./elements"
 import { faker } from '@faker-js/faker';
 
 class BookingAndPayment {
-
-    numberOfAdults = 0
-    numberOfChilder = 0
-    numberOfPrivateTours = 0
-
     selectNumberOfAdults(adults) {
         cy.get(BOOKING.NUMBER_ADULTS_SELECT).select(adults)
-        this.numberOfAdults = adults
     }
 
     selectNumberOfChilder(children) {
         cy.get(BOOKING.NUMBER_CHILDER_SELECT).select(children)
-        this.numberOfChilder = children
     }
 
     selectNumberOfParticipantsBigApplePrivateTour(numberOfParticipants) {
         cy.waitForDataToLoad(ENDPOINTS.METHODS.GET, ENDPOINTS.AVAILABILITIES)
-        this.numberOfPrivateTours = numberOfParticipants
 
         cy.get(BOOKING.NUMBER_PERSON_BIG_APPLE_PRIVATE_TOUR).within(() => {
             cy.get('option').each(($element) => {
@@ -41,16 +33,22 @@ class BookingAndPayment {
         cy.get(PAYMENT.CARD_NUMBER).clear().type(cardNumber)
     }
 
-    populatePaymentInfo(cardNumber) {      
+    populatePaymentInfo(cardNumber) {  
+        var validCard =
+        {
+            cardNumber:"4242424242424242",
+            expiryDateMonth: "2",
+            expiryDateYear: "2023"
+        }
         if (cardNumber != undefined) {
             cy.get(PAYMENT.CARD_NUMBER).type(cardNumber)
         }
         else {
-            cy.get(PAYMENT.CARD_NUMBER).type('4242424242424242')
+            cy.get(PAYMENT.CARD_NUMBER).type(validCard.cardNumber)
         }
 
-        cy.get(PAYMENT.CARD_EXPIRY_MONTH).select(2)
-        cy.get(PAYMENT.CARD_EXPIRY_YEAR).select("2023")
+        cy.get(PAYMENT.CARD_EXPIRY_MONTH).select(validCard.expiryDateMonth)
+        cy.get(PAYMENT.CARD_EXPIRY_YEAR).select(validCard.expiryDateYear)
         cy.get(PAYMENT.CARDHOLDER_NAME).type(faker.name.fullName())
         cy.get(PAYMENT.CARD_CVC).type(faker.finance.creditCardCVV())
         cy.get(PAYMENT.COUNTRY_CODE).select(Math.floor(Math.random() * 150))

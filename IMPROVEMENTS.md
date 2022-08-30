@@ -26,4 +26,3 @@ The test itself can be improved a lot in terms of how the test data is being han
 The test itself should not depend on be dependent of states of elements that are not the main goal of testing of the test, for example, if we run the test.cy.js test few times so that all of the tours are sold out that day, the test will fail and it will not even test the main goal
 
 Best practices for writing test cases is to write them in an so called 'imperative mood' i.e. "Click the Login button", "Select options xyz", which in test.cy.js is not the case
-

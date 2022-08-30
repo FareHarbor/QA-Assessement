@@ -32,6 +32,7 @@ describe('FareHarbor - Validate activities can be book in future', function () {
 */
     it('Book Big Apple\'s Private tour with 4 people', () => {
 
+        // Test requirement is to book tour for 4 persons
         const numberOfPeople = 4
         var randomDate = calendar.randomDate(new Date(), new Date(2023, 11, 31))
 
@@ -45,35 +46,7 @@ describe('FareHarbor - Validate activities can be book in future', function () {
         bookingAndPayment.populatePaymentInfo()
         bookingAndPayment.clickCompleteAndPayButton()
 
+        //Validate the successful booking confirmation ticket row exists 
         invoice.getTicketRow().should('be.visible')
-/*
-        The invoice.getInvoiceAmountsVisible() returns all invoice table rows which we validate with following structure in mind:
-        - ticket
-        .
-        .  
-        .
-        - ticket
-        - total price for tickets
-        - taxes and fees
-        - total amount paid
-*/
-        var totalPrice = .0
-        var taxesAndFee = .0
-        var regex = /[$,]/gm
-        invoice.getInvoiceAmountsVisible().each(($element, index) => {
-            if (index < numberOfPeople) {
-                totalPrice = totalPrice + parseFloat($element.text().replace(regex, ""))
-            }
-            else if (index == numberOfPeople) {
-                expect(parseFloat($element.text().replace(regex, "")).toFixed(2)).to.eq(totalPrice.toFixed(2))
-            }
-            else if(index == numberOfPeople + 1) {
-                taxesAndFee = totalPrice*0.16
-                expect(parseFloat($element.text().replace(regex, "")).toFixed(2)).to.eq(taxesAndFee.toFixed(2))
-            }
-            else {
-                expect(parseFloat($element.text().replace(regex, "")).toFixed(2)).to.eq((totalPrice + taxesAndFee).toFixed(2))
-            }
-        })
     })
 })

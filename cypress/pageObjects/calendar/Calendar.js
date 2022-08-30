@@ -4,6 +4,7 @@ class Calendar {
     selectADate(date) {
         var today = new Date()
 
+        // If the date returns a date that has another year than current, first change the year before selecting month and date
         if (today.getFullYear() < date.getFullYear()) {
             cy.get(CALENDAR.YEAR_DROPDOWN).select(date.getFullYear().toString())        // Had to cast to String because the selec method could not find year
         }

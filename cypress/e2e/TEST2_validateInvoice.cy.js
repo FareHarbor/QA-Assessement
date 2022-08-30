@@ -59,16 +59,20 @@ describe('FareHarbor - Validate invoice', function () {
         var taxesAndFee = .0
         var regex = /[$,]/gm
         invoice.getInvoiceAmountsVisible().each(($element, index) => {
+            // First n(==randomNumOfParticipants) prices are prices for each ticket separately
             if (index < randomNumOfParticipants) {
                 totalPrice = totalPrice + parseFloat($element.text().replace(regex, ""))
             }
+            // The n-th price is the combined tickets price
             else if (index == randomNumOfParticipants) {
                 expect(parseFloat($element.text().replace(regex, "")).toFixed(2)).to.eq(totalPrice.toFixed(2))
             }
+            // The n+1-th price is the price of taxes and fees which rounds to 16% of total price
             else if(index == randomNumOfParticipants + 1) {
                 taxesAndFee = totalPrice*0.16
                 expect(parseFloat($element.text().replace(regex, "")).toFixed(2)).to.eq(taxesAndFee.toFixed(2))
             }
+            // The n+2-th price is the total amount user has paid including fees and taxes
             else {
                 expect(parseFloat($element.text().replace(regex, "")).toFixed(2)).to.eq((totalPrice + taxesAndFee).toFixed(2))
             }

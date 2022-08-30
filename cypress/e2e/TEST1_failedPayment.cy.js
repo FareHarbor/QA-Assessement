@@ -57,7 +57,6 @@ describe('FareHarbor - Failed payments', function () {
             bookingAndPayment.clickCompleteAndPayButton()
 
             cy.task('log', 'STEP ' + (3*index+10).toString() +' - Validate error code exists and is as expected')
-            //bookingAndPayment.getCardNumberField().should('be.visible')
             bookingAndPayment
                 .getCardNumberField()
                 .should('be.visible')
