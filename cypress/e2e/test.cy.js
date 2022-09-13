@@ -1,7 +1,7 @@
 
-  import Calendar from '../pageObjects/calendar.js'
-  import Utils from '../pageObjects/utils.js'
-  import Bookings from '../pageObjects/booking.js'
+  import Calendar from '../pageObjects/calendar.js';
+  import Utils from '../pageObjects/utils.js';
+  import Bookings from '../pageObjects/booking.js';
 
   /**
    * Add of missing semicolons to code.
@@ -14,7 +14,7 @@
     const bookings = new Bookings();
 
     before(function () {
-      cy.visit('https://demo.fareharbor.com/embeds/book/bigappletours/items/?full-items=yes');
+      cy.visit('/embeds/book/bigappletours/items/?full-items=yes');
     });
   
     context('When page is initially opened', function () {
@@ -51,7 +51,7 @@
     });
 
     context('I select the amount of people', function () {
-      it('I add 26 adults', function () {
+      it('I add 25 adults', function () {
         utils.addPeople(25);    // The maximum of people to add is 25
       });
     });
@@ -72,8 +72,8 @@
       });
 
       it('I get my receipt', function () {
-        cy.wait(10000);     // Add of wait to wait for the element until is rendered when the transaction was performed successfully
-        cy.get('.receipt-header').should('be.visible');
+        // Timer added to wait for the element until is rendered when the transaction is performed successfully
+        cy.get('.receipt-header', { timeout: 10000 }).should('be.visible');
       });
     });
 

@@ -17,7 +17,7 @@ class calendar {
     selectNextDay() {
         //Current Day Plus 1
         cy.get('.current-day').then(($nextDay) => {
-            const txt = parseInt($nextDay.text()) + 4;
+            const txt = parseInt($nextDay.text()) + 5;
             
             cy.get('.calendar-small-day').contains(txt).click();
         });
@@ -27,6 +27,21 @@ class calendar {
         //pick first available time
         cy.get('.calendar-small-content').should('be.visible');
         cy.get('ul[ng-autofocus] li[class="ng-scope"]').first().click();        // Update of locator
+    }
+
+    /**
+     * My code begins here
+     */
+    selectDay(day) {
+        cy.get('.calendar-small-day').contains(day).click();
+    }
+
+    selectMonth(month) {
+        cy.get('select[ng-model = "calendarCtrl.monthDropdown"]').select(month);
+    }
+
+    selectYear(year) {
+        cy.get('select[ng-model="calendarCtrl.yearDropdown"]').select(year);
     }
  }
 

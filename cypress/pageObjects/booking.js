@@ -5,29 +5,27 @@ import { faker } from '@faker-js/faker';
    */
 
 class bookings {
-
     fillContactInformation() {
-
-        //Name
         cy.get('#id_name').type(faker.name.fullName());
-
-        //Telephone
-        //cy.get('').select('[data-country-code='+faker.address.countryCode().toLowerCase()+'"]')
         cy.get('.flag-container').click();
-        cy.get('.country-list').contains(faker.address.country()).click();
-        cy.get('.bookform-contact-phone').type(faker.phone.phoneNumber('999-###-###'));
-       
-        //Email
+        // I hardcoded the value because for some reason with United States doesn't work
+        cy.get('.country-list').contains('Greece').click();
+        // replace phoneNumber() to number() because is deprecated
+        cy.get('.bookform-contact-phone').type(faker.phone.number('999-###-###'));
         cy.get('#id_email').type(faker.internet.exampleEmail());
 
     }
-    fillPaymentCC() {
-        //Always use the same positive card
-        cy.get('#id_card_number').type('4242424242424242');
-        //Select Next Year, Select second month of next year
-        cy.get('#id_card_expiry_month').select(12);     // Update of month. There is no month 15
-        cy.get('#id_card_expiry_year').select(2);
 
+    fillPaymentCC(creditCardNumber) {
+        if(creditCardNumber) {
+            cy.get('#id_card_number').clear().type(creditCardNumber);
+        } else {
+            cy.get('#id_card_number').type('4242424242424242');    
+        }
+        
+        // Update of month. There is no month 15
+        cy.get('#id_card_expiry_month').select('12 - December');
+        cy.get('#id_card_expiry_year').select(2);
         cy.get('#id_cardholders_name').type(faker.name.fullName());
         cy.get('.card-cvc').type(faker.finance.creditCardCVV());
         cy.get('#id_country_code').select(Math.floor(Math.random() * 150));
