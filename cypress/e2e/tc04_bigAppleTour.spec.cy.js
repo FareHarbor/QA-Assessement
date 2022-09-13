@@ -19,6 +19,9 @@ describe('', () => {
      * available to book
      */ 
     it('books a Big Apple\'s Private Tour', () => {
+        /**
+         * performing basic operations to book a tour
+         */
         cy.get('span[class *= "test-block-big-apples"]').click();
         calendar.selectDay(20);
         calendar.selectTime();

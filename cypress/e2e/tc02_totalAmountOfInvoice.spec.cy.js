@@ -13,6 +13,9 @@ describe('FareHarbor | Calculate Total Amount of Invoice', () => {
     });
 
     it('calculates the total amount of the invoice', () => {
+        /**
+         * performing basic operations to book a tour
+         */
         cy.get('.grid-block-width-1-3').click();
         calendar.selectDay(20);
         calendar.selectTime();

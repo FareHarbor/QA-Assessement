@@ -9,10 +9,10 @@ class calendar {
     }
 
     /**
-     * This method is not going to work properly when the day is 31, because
-     * there is no 32 in any month. On the other hand, it doesn't work for the next
-     * day. If I'm on the day 7th, it doesn't select the day 8th. I needed to add 3 or more
-     * to the calculation to perform the click of the element.
+     * This method is not going to work properly when the day is 31/30, or 28/29 when it's February. 
+     * On the other hand, it doesn't work for the nextday. If I'm on the day 7th, it doesn't 
+     * select the day 8th. I needed to add 3 or more to the calculation to perform the 
+     * click of the element.
      */
     selectNextDay() {
         //Current Day Plus 1

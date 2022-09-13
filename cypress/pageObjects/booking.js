@@ -16,10 +16,16 @@ class bookings {
 
     }
 
+    /**
+     * Update of method to set invalid credit card numbers
+     */
     fillPaymentCC(creditCardNumber) {
         if(creditCardNumber) {
+            // setting an invalid credit card number
             cy.get('#id_card_number').clear().type(creditCardNumber);
         } else {
+            // if there is no value passed to the method, it will set a
+            // a valid credit card number
             cy.get('#id_card_number').type('4242424242424242');    
         }
         

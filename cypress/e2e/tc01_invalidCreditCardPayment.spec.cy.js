@@ -13,6 +13,9 @@ describe('FareHarbor| Invalid Credit Card Payment', () => {
     });
 
     it('attempts to book a tour with an invalid credit card number', () => {
+        /**
+         * performing basic operations to book a tour
+         */
         cy.get('.grid-block-width-1-3').click();
         calendar.selectDay(20);
         calendar.selectTime();
@@ -22,6 +25,7 @@ describe('FareHarbor| Invalid Credit Card Payment', () => {
         cy.fixture('invalidCreditCards')
             .then((invalidCC) => {
                 invalidCC.forEach((item) => {
+                    // passing the invalid credit card numbers to the method
                     bookings.fillPaymentCC(item.number);
 
                     cy.get('.btn-huge').click();

@@ -19,6 +19,9 @@ describe('FareHarbor| Book a Tour in the future', () => {
      * available to book
      */ 
     it('books an tour in the next year', () => {
+        /**
+         * performing basic operations to book a tour
+         */
         cy.get('.grid-block-width-1-3').click();
         calendar.selectYear('2023');
         calendar.selectDay(20);
@@ -32,6 +35,9 @@ describe('FareHarbor| Book a Tour in the future', () => {
     });
 
     it('books an tour in the next month', () => {
+        /**
+         * performing basic operations to book a tour
+         */
         cy.get('.grid-block-width-1-3').click();
         calendar.selectMonth('October');
         calendar.selectDay(20);

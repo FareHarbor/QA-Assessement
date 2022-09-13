@@ -1,9 +1,9 @@
   /**
    * Add of missing semicolons to code.
    * The name Utils, for me, means an auxiliary class with methods that can help me
-   * to perform some activity not related with the UI of the page (i. e.: to generate
-   * a random number, to create a method to read a CSV/JSON file, etcetera). The following
-   * method could be added in the booking class.
+   * to perform some functionalities not related with the UI of the page (i. e.: to generate
+   * a random number or string, to create a method to read a CSV/JSON file, etcetera). The following
+   * methods could be added in the booking class.
    */
 
 class utils {
@@ -21,6 +21,7 @@ class utils {
      * My code begins here
      */
     bigAppleTourSelection(people) {
+        // Selecting the number of people for the second dropdown
         cy.get('.test-select-count-action').eq(1).select(people);
     }
 
@@ -28,6 +29,7 @@ class utils {
         var subtotal, taxes, fees, total;
         var adultCost = "", childCost = "", grandTotal = "";
 
+        // getting the values from the UI and saving them into a variables
         cy.get('div[class *= "test-customer-type-rate-cost-adult"] span[class *= "price-wrap"]').invoke('text').then((value) => {
             adultCost = value.replace('$', '');
             cy.wrap(adultCost).as('adultCost');
@@ -38,6 +40,7 @@ class utils {
             cy.wrap(childCost).as('childCost')
         }); 
 
+        // performing the calculations to validate the costs displayed in the invoice
         if(children < 0) {
             cy.get('@adultCost').then(adultCost => {
                 subtotal = (adults * parseFloat(adultCost));
@@ -45,6 +48,7 @@ class utils {
                 fees = (adults * 2.10);
                 total = subtotal + taxes + fees;
 
+                // asserting the calculated cost against the value displayed in the UI
                 cy.get('span[class *= "test-total-indicator"]').invoke('text').then((value) => {
                     grandTotal = value.replace('$', '');
                     expect(grandTotal).to.eq(total);
@@ -58,6 +62,7 @@ class utils {
                     fees = (adults * 2.10) + (children * 1.20);
                     total = subtotal + taxes + fees;
 
+                    // asserting the calculated cost against the value displayed in the UI
                     cy.get('span[class *= "test-total-indicator"]').invoke('text').then((value) => {
                         grandTotal = value.replace('$', '');
                         expect(parseFloat(grandTotal)).to.eq(total);
