@@ -15,7 +15,7 @@ describe('Book a Tour in the next month and next year', () => {
     it('book a tour in the next month', () => {
         tours.getWalkingTour().click();
         calendar.selectMonth(9);
-        calendar.selectDay(2);
+        calendar.selectDay(12);
         calendar.selectTime();
         bookings.addPeople(3, 1);
         bookings.fillContactInformation();

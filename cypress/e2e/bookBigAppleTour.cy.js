@@ -15,7 +15,7 @@ describe('Book a big apple tour', () => {
     it('books a apple Tour', () => {
         tours.getBigAppleTour().click();
         calendar.selectMonth(9);
-        calendar.selectDay(18);
+        calendar.selectDay(12);
         calendar.selectTime();
         bookings.addPeopleForBigAppleTour('4');
         bookings.fillContactInformation();
