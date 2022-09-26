@@ -1,11 +1,10 @@
-class utils {
+import {faker} from "@faker-js/faker";
+import Bookings from "./booking";
 
-    addPeople(adults,children) {
-        cy.get('.test-select-count-adult select').select(adults);
-        if(children>0)
-        {
-        cy.get('.test-select-count-child select').select(children);
-        }
-    }
+class utils {
+    /** Here will added some logics to perform apart from UI things. 
+     * For example, reading from excel or json or xml etc.. 
+     * That's why i moved add people method to bookings */
 }
- export default utils
+
+export default utils
