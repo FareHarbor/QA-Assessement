@@ -1,0 +1,37 @@
+[
+  {
+    "description": "Generic decline",
+    "cardNumber": "4000000000000002",
+    "errorMessage": "Could not process payment because the card was declined. Please make sure all card details have been entered correctly. If you are still unsuccessful you may need to call the card issuer or try a different card."
+  },
+  {
+    "description": "Insufficient funds decline",
+    "cardNumber": "4000000000009995",
+    "errorMessage": "Could not process payment because the account has insufficient funds. Please call the card issuer or try another card."
+  },
+  {
+    "description": "Lost card decline",
+    "cardNumber": "4000000000009987",
+    "errorMessage": "Could not process payment because the card was declined. Please make sure all card details have been entered correctly. If you are still unsuccessful you may need to call the card issuer or try a different card."
+  },
+  {
+    "description": "Stolen card decline",
+    "cardNumber": "4000000000009979",
+    "errorMessage": "Could not process payment because the card was declined. Please make sure all card details have been entered correctly. If you are still unsuccessful you may need to call the card issuer or try a different card."
+  },
+  {
+    "description": "Expired card decline",
+    "cardNumber": "4000000000000069",
+    "errorMessage": "Could not process payment because the card is cancelled or expired. Please try a different card."
+  },
+  {
+    "description": "Incorrect CVC decline",
+    "cardNumber": "4000000000000127",
+    "errorMessage": "Could not process payment because the card CVC (security code) could not be verified. Please check the card security code, make sure all other card details have been entered correctly, and try again."
+  },
+  {
+    "description": "Processing error decline",
+    "cardNumber": "4000000000000119",
+    "errorMessage": "There was an error processing this request. Please refresh the page and try again, or contact FareHarbor Support. (U-PROC)"
+  }
+]
