@@ -14,7 +14,7 @@ class calendar {
     selectTime() {
         //pick first available time
         cy.get('.calendar-small-content').should('be.visible');
-        cy.get('li').first().click();
+        cy.get('.calendar-small-content li').first().click(); //Issue: Wrong selector which gets all Links element.  Fix:: Updated selector to get Links under calendar
     }
  }
 
