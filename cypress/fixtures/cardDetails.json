@@ -1,0 +1,48 @@
+{
+    "declinedPayment": [
+        {
+            "cardNumber": "4000000000000002",
+            "errorCode": "card_declined",
+            "declineCode": "generic_decline",
+            "errorMessage": "Could not process payment because the card was declined. Please make sure all card details have been entered correctly. If you are still unsuccessful you may need to call the card issuer or try a different card."
+        },
+        {
+            "cardNumber": "4000000000009995",
+            "errorCode": "card_declined",
+            "declineCode": "insufficent_funds",
+            "errorMessage": "Could not process payment because the account has insufficient funds. Please call the card issuer or try another card."
+        },
+        {
+            "cardNumber": "4000000000009987",
+            "errorCode": "card_declined",
+            "declineCode": "lost_card",
+            "errorMessage": "Could not process payment because the card was declined. Please make sure all card details have been entered correctly. If you are still unsuccessful you may need to call the card issuer or try a different card."
+        },
+        {
+            "cardNumber": "4000000000009979",
+            "errorCode": "card_declined",
+            "declineCode": "stolen_card",
+            "errorMessage": "Could not process payment because the card was declined. Please make sure all card details have been entered correctly. If you are still unsuccessful you may need to call the card issuer or try a different card."
+        },
+        {
+            "cardNumber": "4000000000000069",
+            "errorCode": "expired_card",
+            "errorMessage": "Could not process payment because the card is cancelled or expired. Please try a different card."
+        },
+        {
+            "cardNumber": "4000000000000127",
+            "errorCode": "incorrect_cvc",
+            "errorMessage": "Could not process payment because the card CVC (security code) could not be verified. Please check the card security code, make sure all other card details have been entered correctly, and try again."
+        },
+        {
+            "cardNumber": "4000000000000119",
+            "errorCode": "processing_error",
+            "errorMessage": "There was an error processing this request. Please refresh the page and try again, or contact FareHarbor Support. (U-PROC)"
+        },
+        {
+            "cardNumber": "4242424242424241",
+            "errorCode": "incorrect_number",
+            "errorMessage": "Incorrect card number. Please check that you have entered your card number correctly and try again."
+        }
+    ]
+}
