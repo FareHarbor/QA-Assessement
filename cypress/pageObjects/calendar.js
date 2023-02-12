@@ -25,12 +25,20 @@ class calendar {
 
     //Select Given Date, Month and Year
     selectDay(date) {
+        this.selectYear(date)
+        cy.get(CALENDAR.MONTH_DROPDOWN).select(date.getMonth())
+        cy.get(CALENDAR.DAY_CURRENT_MONTH).contains(date.getDate()).click()
+    }
+
+    selectYear(date) {
         var currentDate = new Date()
         if (currentDate.getFullYear() < date.getFullYear()) {
             cy.get(CALENDAR.YEAR_DROPDOWN).select(date.getFullYear().toString())
         }
-        cy.get(CALENDAR.MONTH_DROPDOWN).select(date.getMonth())
-        cy.get(CALENDAR.DAY_CURRENT_MONTH).contains(date.getDate()).click()
+    }
+
+    getEmptyCalendar(){
+        return cy.get(CALENDAR.EMPTY_CALENDAR)
     }
 
 }

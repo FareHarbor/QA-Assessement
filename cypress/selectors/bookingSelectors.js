@@ -1,7 +1,10 @@
 module.exports = {
     ATTENDEE: {
         ADULTS_TO_SELECT: ".test-select-count-adult select",
-        CHILDRENS_TO_SELECT: ".test-select-count-child select"
+        CHILDRENS_TO_SELECT: ".test-select-count-child select",
+        BIG_APPLE_ATTENDEE:"select.test-select-count-action",
+        BIG_APPLE_ATTENDEE_LIST:"select.test-select-count-action option",
+        CATERING_OPTION:".ng-scope .customer-type-card"
     },
     CONTACT: {
         CONTACT_NAME: "#id_name",
