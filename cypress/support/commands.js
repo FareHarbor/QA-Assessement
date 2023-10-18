@@ -23,3 +23,17 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+// Cypress.Commands.add('removeCommasFromNumber', (str) => { 
+//     var format = /,/
+//     if(format.test(str)){
+//         str = str.replace(/,/, '')
+//     }
+//     return str;
+// })
+
+// Cypress.Commands.add('splitAndTrimString', (str,index) => { 
+//         const amount = str.text()
+//         var res = amount.split("$")
+//         res = res[index].trim()
+// })
