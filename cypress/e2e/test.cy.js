@@ -8,7 +8,8 @@
     const utils = new Utils()
     const bookings = new Bookings()
     before(function () {
-      cy.visit('https://demo.fareharbor.com/embeds/book/bigappletours/items/?full-items=yes')
+      //added baseUrl in the cypress.config.js file
+      cy.visit('/embeds/book/bigappletours/items/?full-items=yes') 
       cy.fixture('example').then(function(data) {
         this.data = data
       })
@@ -25,9 +26,8 @@
       })
 
       it('activity overlay should be present', function () {
-        //syntax correction hence removed . after should
-        //Cypress by default clears the current session data before each test so disabled testIsolation in cypress config file
-        cy.get('#ng-app').should('be.visible');
+        //Cypress by default clears the current session data before each test so disabled testIsolation by setting it to false in cypress config file
+        cy.get('#ng-app').should('be.visible'); //syntax correction hence removed . after should
       })
     })    
 
@@ -43,11 +43,8 @@
 
     context('I select a day/time for my activity', function () {
       it('I pick a day', function () {
-        //booking for next day is not possible as the tour slots are sold out till 21st Oct,2023
-        //calendar.selectNextDay();
-
-        //selecting 1 week from the current day to book a slot
-        calendar.selectNextWeek();
+        //please note that booking for next day is not possible as the tour slots are sold out till 21st Oct,2023 
+        calendar.selectNextDay();
       })
 
       it('I pick a time', function () {
@@ -78,7 +75,7 @@
 
     context('I pay and get confirmation', function () {
       it('I complete and pay', function () {
-        //updating correct locator
+        //updated correct locator
         cy.get('.btn-huge').click();
       })
 

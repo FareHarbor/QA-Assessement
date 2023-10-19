@@ -4,7 +4,9 @@
   "description": "FareHarbor Quality Engineer Assessment.",
   "main": "index.js",
   "scripts": {
-    "test": "npx cypress run"
+    "test": "npx cypress run",
+    "openCypress" : "npx cypress open",
+    "viewTestOnChromeBrowser" : "npx cypress run --headed --browser chrome"
   },
   "repository": {
     "type": "git",

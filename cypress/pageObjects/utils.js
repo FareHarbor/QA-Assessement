@@ -38,7 +38,7 @@ class utils {
 
     validateTotalAmountMoneyCalculation(){
         var sum = 0
-        var taxfees = 0
+        var taxesAndfees = 0
         var sumWithTaxes = 0
         //Getting individual price per adult and calculating the total sum
         cy.get('.itable-amount span span').each((e3)=>{
@@ -49,25 +49,18 @@ class utils {
         }).then (function()
         {
             cy.log(sum) //provides the total of all persons involved in the booking purchased
-        })
-        cy.get('td[ng-amount="costs.totalCost.tax + fee"]').then(function(tax){
-            const amount = tax.text()
-            var res = amount.split("$")
-            res = res[1].trim()
-            taxfees = Number(res)
-            cy.log(taxfees) //provides the overall taxes incurred
+            taxesAndfees = sum*0.16  //provides the overall taxes incurred [10% taxes and 6% fees]
+            cy.log(taxesAndfees)
+            sumWithTaxes = (sum + taxesAndfees).toFixed(2) //summing up taxes and total costs of persons in booking
+            cy.log(sumWithTaxes)
         })
         cy.get('tr.text-larger b.amount-visible').then(function(totalAmount){
             const amount = totalAmount.text()
             var res = amount.split("$")
             res = res[1].trim()
             var result = res.replace(/,/,'')
-            var totalServiceAmountInludingTaxesFees = Number(result)
-            totalServiceAmountInludingTaxesFees = totalServiceAmountInludingTaxesFees.toFixed(2)
-            sumWithTaxes = Number(sum) + Number(taxfees) //summing up taxes and total costs of persons in booking
-            sumWithTaxes = sumWithTaxes.toFixed(2)
+            var totalServiceAmountInludingTaxesFees = Number(result).toFixed(2)
             cy.log(totalServiceAmountInludingTaxesFees)
-            cy.log(sumWithTaxes)
             expect(totalServiceAmountInludingTaxesFees).to.equal(sumWithTaxes)
         })
     }

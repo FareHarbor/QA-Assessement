@@ -1,21 +1,12 @@
 class calendar {
 
     selectToday() {
-        //return cy.get('.current-day').click();
+        // cy.get('.current-day').click();
     }
     selectNextDay() {
         //Current Day Plus 1
         cy.get('.current-day').then(($nextDay) => {
             const txt = parseInt($nextDay.text())+1;
-            cy.get('.calendar-small-day').contains(txt).click();
-        })
-
-    }
-
-    selectNextWeek() {
-        //Current Day Plus 7
-        cy.get('.current-day').then(($nextDay) => {
-            const txt = parseInt($nextDay.text())+7;
             cy.get('.calendar-small-day').contains(txt).click();
         })
 
@@ -38,8 +29,8 @@ class calendar {
 
     selectTime() {
         //pick first available time
-        cy.get('div.calendar-small-content').should('be.visible');
-        cy.get('li').find('span.cal-block-content-wrap').first().click();
+        cy.get('div.calendar-small-content').should('be.visible'); //fixed the locator
+        cy.get('li').find('span.cal-block-content-wrap').first().click(); //fixed the locator
     }
 
     emptyState() {
