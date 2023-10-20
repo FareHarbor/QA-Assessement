@@ -1,5 +1,10 @@
 {
-  "name": "Using fixtures to represent data",
-  "email": "hello@cypress.io",
-  "body": "Fixtures are a great way to mock data for responses to routes"
+  "successCard": 4242424242424242,
+  "failureCard" : 4000000000006975,
+  "customWaitTime" : 10000,
+  "nextYear" : "2024",
+  "maxNumberOfPeople" : 25,
+  "bookingPeopleForBigApplesPrivateTour" : "4",
+  "peopleForTotalAmountValidation" : "5",
+  "lessNumberOfPeople" : "2"
 }
